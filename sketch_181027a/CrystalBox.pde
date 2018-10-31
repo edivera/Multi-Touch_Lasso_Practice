@@ -17,6 +17,7 @@ class CrystalBox {
   private float wid = 0.0;
   
   private boolean containsObject = false;
+  private Object  contained = null;
   
   public CrystalBox(float x, float y, float w, float h) {
     wid = w;
@@ -28,10 +29,11 @@ class CrystalBox {
     if(containsObject) {
     }
     else {
+      drawEmpty();
     }
   }
   
-  public void drawEmpty() {
+  private void drawEmpty() {
     PVector[] c = cords;
     //white lines no fill
     colorMode(RGB, 255);
@@ -48,7 +50,16 @@ class CrystalBox {
     }
   }
   
-  
+  public void emptyBox() {
+    //todo: edit
+    contained = null;
+    containsObject = false;
+  }
+  public void fillBoxWith(Object o) {
+    //todo: edit
+    contained = o;
+    containsObject = true;
+  }
   
   private void craft(float x, float y) {
     cords[craftIdx++] = new PVector(x, y);
